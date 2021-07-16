@@ -1,0 +1,15 @@
+#header {
+  height: 64px;
+  background-color: black;
+}
+
+#body {
+  /* 바디는 다 차지해야 하므로 부모 높이 다 채움 */
+  height: 100%;
+  background-color: blue;
+}
+
+#footer {
+  height: 200px;
+  background-color: red;
+}
