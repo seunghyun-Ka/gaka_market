@@ -72,6 +72,8 @@
   margin-bottom: 12px;
   border-radius: 12px;
   border: 1px solid rgb(230, 230, 230);
+  /* 맨 앞으로 땡기기 (앞 그림에 가려서 안보일 때) */
+  overflow: hidden;
 }
 
 .product_img {

@@ -15,34 +15,50 @@
             </div>
             <h1>판매되는 상품들</h1>
             <div id="product_list">
-                <div class="product_card">
-                    <div>
-                        <img class="product_img" src="images/products/basketball1.jpeg" />
-                    </div>
-                    <div class="product_contents">
-                        <span class="product_name">농구공 1호</span>
-                        <span class="product_price">20000</span>
-                        <div class="product_seller">
-                            <img class="product_avatar" src="images/icons/avatar.png" />
-                            <span>가카</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="product_card">
-                    <div>
-                        <img class="product_img" src="images/products/keyboard1.jpg" />
-                    </div>
-                    <div class="product_contents">
-                        <span class="product_name">키보드 1호</span>
-                        <span class="product_price">25000</span>
-                        <div class="product_seller">
-                            <img class="product_avatar" src="images/icons/avatar.png" />
-                            <span>가카</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div id="footer"></div>
     </body>
+    <script>
+        var Products = [{
+            name : '농구공',
+            price : 12000,
+            seller : "김덕만",
+            imageUrl : 'images/products/basketball1.jpeg'
+        },{
+            name : '축구공',
+            price : 10000,
+            seller : "김덕순",
+            imageUrl : 'images/products/soccerball1.jpg'
+        },{
+            name : '키보드',
+            price : 15000,
+            seller : "김덕자",
+            imageUrl : 'images/products/keyboard1.jpg'
+        }]
+
+        //상품카드 포문써서 여러개 보여지게
+        let productsHtml = "";
+        for(var i = 0; i < Products.length; i++){
+            let product = Products[i]
+            productsHtml += 
+        '<div class="product_card">'+
+        '    <div>'+
+        '        <img class="product_img" src='+product.imageUrl+' />'+
+        '    </div>'+
+        '    <div class="product_contents">'+
+        '        <span class="product_name">'+product.name+'</span>'+
+        '        <span class="product_price">'+product.price+'</span>'+
+        '            <div class='+product.seller+'>'+
+        '                <img class="product_avatar" src="images/icons/avatar.png" />'+
+        '                    <span>'+product.seller+'</span>'+
+        '            </div>'+
+        '    </div>'+
+        '</div>'
+        }
+
+        //자바스크립트로 html조작가능
+        document.querySelector("#product_list").innerHTML = productsHtml
+        
+    </script>
 </html>
