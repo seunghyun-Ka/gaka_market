@@ -71,6 +71,7 @@
   margin-right: 12px;
   margin-bottom: 12px;
   border-radius: 12px;
+  border: 1px solid rgb(230, 230, 230);
 }
 
 .product_img {
@@ -91,4 +92,17 @@
 .product_price {
   font-size: 16px;
   font-weight: 600;
+  margin-top: 4px;
+}
+
+.product_seller {
+  display: flex;
+  /* 사람 이미지 교차축의 중간에 정렬 */
+  align-items: center;
+  margin-top: 12px;
+}
+
+.product_avatar {
+  /* 위스만 줘도 비율따라감 */
+  width: 24px;
 }
