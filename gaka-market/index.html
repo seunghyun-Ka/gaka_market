@@ -2,6 +2,8 @@
     <head>
         <title>가카마켓</title>
         <link href="index.css" type="text/css" rel="stylesheet"/>
+        <!-- 외부 라이브러리(여기선 axios써서 목서버 불러오는 것) -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <div id="header">
@@ -20,36 +22,25 @@
         <div id="footer"></div>
     </body>
     <script>
-        var Products = [{
-            name : '농구공',
-            price : 12000,
-            seller : "김덕만",
-            imageUrl : 'images/products/basketball1.jpeg'
-        },{
-            name : '축구공',
-            price : 10000,
-            seller : "김덕순",
-            imageUrl : 'images/products/soccerball1.jpg'
-        },{
-            name : '키보드',
-            price : 15000,
-            seller : "김덕자",
-            imageUrl : 'images/products/keyboard1.jpg'
-        }]
+        // 내 목서버 주소
+        axios.get('https://07c58100-cf07-4f11-971b-b140dbfbd7bd.mock.pstmn.io/products')
+        .then(function(result){
+            console.log('통신 결과', result)
+            const products = result.data.products
 
-        //상품카드 포문써서 여러개 보여지게
+            //상품카드 포문써서 여러개 보여지게
         let productsHtml = "";
-        for(var i = 0; i < Products.length; i++){
-            let product = Products[i]
+        for(var i = 0; i < products.lenght; i++){
+            let product = products[i];
             productsHtml += 
         '<div class="product_card">'+
         '    <div>'+
-        '        <img class="product_img" src='+product.imageUrl+' />'+
+        '        <img class="product_img" src="'+product.imageUrl+' "/>'+
         '    </div>'+
         '    <div class="product_contents">'+
         '        <span class="product_name">'+product.name+'</span>'+
         '        <span class="product_price">'+product.price+'</span>'+
-        '            <div class='+product.seller+'>'+
+        '            <div class="product_seller">'+
         '                <img class="product_avatar" src="images/icons/avatar.png" />'+
         '                    <span>'+product.seller+'</span>'+
         '            </div>'+
@@ -57,8 +48,41 @@
         '</div>'
         }
 
+        for (var i = 0; i < products.length; i++) {
+            let product = products[i];
+            productsHtml =
+                productsHtml +
+                '<div class="product_card">' +
+                "<div>" +
+                '<img class="product_img" src="' +
+                product.imageUrl +
+                '" />' +
+                "</div>" +
+                '<div class="product_contents">' +
+                '<span class="product_name">' +
+                product.name +
+                "</span>" +
+                '<span class="product_price">' +
+                product.price +
+                "원" +
+                "</span>" +
+                '<div class="product_seller">' +
+                '<img class="product_avatar" src="images/icons/avatar.png" />' +
+                "<span>" +
+                product.seller +
+                "</span>" +
+                "</div>" +
+                "</div>" +
+                "</div>";
+        }
+
         //자바스크립트로 html조작가능
         document.querySelector("#product_list").innerHTML = productsHtml
+        }).catch(function(error){
+            console.error('에러 발생', error)
+        });
+
+        
         
     </script>
 </html>
